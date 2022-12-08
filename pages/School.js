@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { View, Text, Image, FlatList, StyleSheet, TouchableHighlight } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 function School({ navigation }) {
@@ -11,7 +10,7 @@ function School({ navigation }) {
   }, []);
 
   function getData() {
-    fetch('http://192.168.18.79:3000/academy')
+    fetch('https://api.npoint.io/fbca41d3404d48034f9e/academy')
       .then((response) => response.json())
       .then((json) => {
         setData(json);

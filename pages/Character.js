@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, Image, FlatList, StyleSheet, TouchableHighlight } from 'react-native';
-import 'react-native-gesture-handler';
+
 
 function Character({ navigation }) {
   const [data, setData] = useState([]);
@@ -10,7 +10,7 @@ function Character({ navigation }) {
   }, []);
 
   function getData() {
-    fetch('http://192.168.18.79:3000/characters')
+    fetch('https://api.npoint.io/fbca41d3404d48034f9e/characters')
       .then((response) => response.json())
       .then((json) => {
         setData(json);

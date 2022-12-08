@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Image, View, FlatList, Text, StyleSheet } from 'react-native';
+import { Image, View, FlatList,  Text, StyleSheet } from 'react-native';
 
 
 const SchoolDetail = ({ route }) => {
@@ -10,7 +10,7 @@ const SchoolDetail = ({ route }) => {
   }, []);
 
   function getData() {
-    fetch('http://192.168.18.79:3000/academy?id=' + route.params.msg)
+    fetch('https://api.npoint.io/fbca41d3404d48034f9e/academy/' + route.params.msg)
       .then((response) => response.json())
       .then((json) => {
         setData(json);
@@ -21,31 +21,22 @@ const SchoolDetail = ({ route }) => {
   }
 
   return (
-    <View>
-      <FlatList
-        data={data}
-        renderItem={({ item }) => (
-          <View>
-            <View style={styles.card}>
-              <Text style={styles.textJudul}>{item.school}</Text>
-              <Image source={{ uri: item.imageSchool }} style={styles.img} />
-              <Text style={styles.textnama}>Description </Text>
-              <View style={styles.container}>
-                <View style={styles.bordertext}>
-                  <Text style={styles.desc}>{item.description}</Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        )}
-      />
+    <View style={styles.card}>
+        <Text style={styles.textJudul}>{data.school}</Text>
+        <Image source={{ uri: data.imageSchool }} style={styles.img} />
+        <Text style={styles.textnama}>Description </Text>
+        {/* <View style={styles.container}> */}
+          {/* <View style={styles.bordertext}> */}
+            <Text style={styles.desc}>{data.description}</Text>
+          {/* </View> */}
+      {/* </View> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex:1,
     alignItems: 'center', // ignore this - we'll come back to it
     justifyContent: 'space-between', // ignore this - we'll come back to it
     flexDirection: 'row',
